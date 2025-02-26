@@ -1,5 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import cors from "cors";
 import { JWT_SECRET } from "@repo/backend-common/config";
 import { middleware } from "./middleware";
 import { CreateRoomSchema, CreateUserSchema, SigninSchema } from "@repo/common/types";
@@ -8,6 +9,7 @@ import { prismaClient} from "@repo/db/client";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 
 app.post("/signup", async(req,res)=>{
@@ -149,6 +151,6 @@ app.get("/room/:slug", async (req,res)=> {
 })
 
 
-app.listen(3001,()=>{
-    console.log("Server is running on port 3001");
+app.listen(3005,()=>{
+    console.log("Server is running on port 3005");
 });
